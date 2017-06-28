@@ -1,0 +1,6 @@
+framework module Pods_Hello_AudioKit {
+  umbrella header "Pods-Hello AudioKit-umbrella.h"
+
+  export *
+  module * { export * }
+}
