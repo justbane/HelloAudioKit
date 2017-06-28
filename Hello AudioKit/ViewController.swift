@@ -20,7 +20,6 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        
         do {
             try clickSampler.loadWav("beep")
         } catch {
@@ -32,15 +31,19 @@ class ViewController: UIViewController {
         
         let track = sequencer.newTrack()
         
+        // COMMENT THIS LINE OUT AND BACKGROUND WILL PLAY
+        // BUT NOT THE SOUND FILE LOADED, JUST GENERAL MIDI
+        track?.setMIDIOutput(self.clickSampler.midiIn)
+        
         track?.add(
-            noteNumber: 88,
+            noteNumber: 67,
             velocity: 100,
             position: AKDuration(beats: Double(1)),
-            duration: AKDuration(beats: Double(0.07)),
+            duration: AKDuration(beats: Double(1)),
             channel: 1)
         sequencer.setLength(AKDuration(beats: Double(4)))
         sequencer.enableLooping()
-        sequencer.setTempo(Double(160))
+        sequencer.setTempo(Double(88))
         
         AudioKit.output = mixer
         AudioKit.start()
